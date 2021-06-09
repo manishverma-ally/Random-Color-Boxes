@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box{
+      width: 30px;
+      height: 30px;
+      margin: 10px;;
+      padding: 10px;
+    }
+
+    #container{
+      display: flex;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <input id="num" type="text">
+  <button id="go">Go</button>
+  <div id="container">
+  </div>
+  <script>
+        const targetInput = document.querySelector("#num");
+        const divs = document.querySelector("#container");
+        const button = document.querySelector("button");
+
+        button.addEventListener('click', (event) => {
+          var nbox=+targetInput.value;
+          // console.log(typeof(nbox),nbox);
+          divs.innerHTML='';
+          for (let index = 0; index < nbox; index++) {
+            var ele=document.createElement('div');
+            ele.className='box';
+            ele.textContent=index;
+            var rand = function(){
+              return Math.floor(Math.random()*256);
+            }
+            ele.style.border = '2px solid rgb('+ rand() + ',' + rand() + ',' + rand() + ')';
+            divs.append(ele);
+          }
+        })
+  </script>
+</body>
+</html>
